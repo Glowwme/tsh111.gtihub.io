@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Program</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        #diet-selection {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .diet-option {
+            background-color: #fff;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 25%;
+            text-align: center;
+        }
+
+        .diet-option:hover {
+            transform: scale(1.05);
+        }
+
+        .diet-option h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .diet-option p {
+            color: #777;
+        }
+
+        #meal-plan {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .meal-plan-info {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            width: 45%;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Choose Your Diet Program</h1>
+    </header>
+
+    <section id="diet-selection">
+        <div class="diet-option" onclick="showDietDetails('weight-loss')">
+            <h2>Weight Loss</h2>
+            <p>Calorie deficit and fat burning</p>
+        </div>
+        <div class="diet-option" onclick="showDietDetails('muscle-gain')">
+            <h2>Muscle Gain</h2>
+            <p>Building muscle and strength</p>
+        </div>
+        <div class="diet-option" onclick="showDietDetails('balanced-nutrition')">
+            <h2>Balanced Nutrition</h2>
+            <p>Achieve overall health</p>
+        </div>
+        <div class="diet-option" onclick="showDietDetails('specialized')">
+            <h2>Specialized Diets</h2>
+            <p>Tailored for specific health conditions</p>
+        </div>
+    </section>
+
+    <section id="meal-plan">
+        <div id="weight-loss-plan" class="meal-plan-info" style="display:none;">
+            <h2>Weight Loss Plan</h2>
+            <h3>Meal Plan:</h3>
+            <ul>
+                <li>Breakfast: Scrambled eggs with spinach</li>
+                <li>Lunch: Grilled chicken with vegetables</li>
+                <li>Dinner: Baked salmon with quinoa</li>
+                <li>Snacks: Greek yogurt and almonds</li>
+            </ul>
+            <h3>Fitness Tips:</h3>
+            <ul>
+                <li>Cardio: 30-45 minutes, 4 days/week</li>
+                <li>Strength training: 3 days/week</li>
+                <li>Stay hydrated</li>
+            </ul>
+        </div>
+
+        <div id="muscle-gain-plan" class="meal-plan-info" style="display:none;">
+            <h2>Muscle Gain Plan</h2>
+            <h3>Meal Plan:</h3>
+            <ul>
+                <li>Breakfast: Oats with protein powder</li>
+                <li>Lunch: Chicken breast with rice and avocado</li>
+                <li>Dinner: Beef steak with sweet potatoes</li>
+                <li>Snacks: Protein shakes and nuts</li>
+            </ul>
+            <h3>Fitness Tips:</h3>
+            <ul>
+                <li>Strength training: 5 days/week</li>
+                <li>High protein intake</li>
+                <li>Ensure proper recovery with rest</li>
+            </ul>
+        </div>
+
+        <div id="balanced-nutrition-plan" class="meal-plan-info" style="display:none;">
+            <h2>Balanced Nutrition Plan</h2>
+            <h3>Meal Plan:</h3>
+            <ul>
+                <li>Breakfast: Whole grain toast with avocado</li>
+                <li>Lunch: Grilled fish with salad</li>
+                <li>Dinner: Quinoa with mixed veggies</li>
+                <li>Snacks: Fresh fruits and a handful of nuts</li>
+            </ul>
+            <h3>Fitness Tips:</h3>
+            <ul>
+                <li>Regular physical activity (30 minutes a day)</li>
+                <li>Include cardio and strength training</li>
+                <li>Prioritize sleep and recovery</li>
+            </ul>
+        </div>
+
+        <div id="specialized-plan" class="meal-plan-info" style="display:none;">
+            <h2>Specialized Diet Plan</h2>
+            <h3>Meal Plan:</h3>
+            <ul>
+                <li>For Diabetic: Low-carb meals with lean proteins</li>
+                <li>For Gluten-Free: Avoid wheat, barley, and rye</li>
+                <li>For Heart Health: Focus on omega-3s and low-sodium foods</li>
+            </ul>
+            <h3>Fitness Tips:</h3>
+            <ul>
+                <li>Consult with a doctor or nutritionist before starting</li>
+                <li>Tailor exercise intensity to individual capabilities</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Diet Program Guide</p>
+    </footer>
+
+    <script>
+        function showDietDetails(dietType) {
+            // Hide all meal plan info sections
+            let allPlans = document.querySelectorAll('.meal-plan-info');
+            allPlans.forEach(function(plan) {
+                plan.style.display = 'none';
+            });
+
+            // Show selected diet plan
+            let selectedPlan = document.getElementById(dietType + '-plan');
+            if (selectedPlan) {
+                selectedPlan.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
